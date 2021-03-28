@@ -1,7 +1,9 @@
 {% extends 'calculations/base.html'%}
 {%block content%}
      <div class="border-top pt-3">
-            <a href="{% url 'calc' %}">1. Create a Python Function to perform a calculation based on the mathematical function</a><br><br><br>
+            <p>1. Create a Python Function to perform a calculation based on the mathematical function</p>
+            <a href="{% url 'calc' %}">a. using recursion</a><br>
+            <a href="{% url 'calc_for' %}">b. using loop</a><br><br><br>
             <a href="{% url 'series' %}">2. Write a Python function to find the next number in the series:</a><br><br><br>
             <a href="{% url 'solve' %}">3. Write a Python Code that takes input as the values of x, y, a, b to solve</a><br><br><br>
     </div>   

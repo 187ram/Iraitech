@@ -41,6 +41,23 @@ def power(x,n):
         return 1/(x**n)+power(x,n-1)
 
 
+def loop(request):
+    x = int(request.GET['x'])
+    n = int(request.GET['n'])
+    if n == 0:
+        result = 0
+    elif n == 1:
+        result = 1/x
+    else:
+        result = 0
+        for i in range(2,n+1):
+            result += 1/(x**i)
+    context = { 'result' : result }
+    return render(request,'calculations/result.html', context)
+
+
+
+
 def nextvalue(request):
     n = int(request.GET['n'])
     if n%2==0:

@@ -8,6 +8,8 @@ urlpatterns = [
     path('api/v1/calculate', views.calculate_api),
     path('calculate', views.calculate, name='calculate'),
     path('calc', views.calc, name='calc'),
+    path('calc_for', views.calc_for, name='calc_for'),
+    path('loop', views.loop, name='loop'),
     path('nextvalue', views.nextvalue, name='nextvalue'),
     path('series', views.series, name='series'),
     path('solve', views.solve, name='solve'),
