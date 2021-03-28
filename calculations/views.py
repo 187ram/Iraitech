@@ -1,6 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from django.http import JsonResponse
 
 #
 @login_required
@@ -15,7 +18,9 @@ def series(request):
 @login_required
 def solve(request):
     return render(request, 'calculations/solve.html')
-
+@login_required
+def calc_for(request):
+    return render(request, 'calculations/calc_for.html')
 
 def calculate(request):
     x = int(request.GET['x'])
@@ -58,3 +63,18 @@ def solution(request):
         result = (x/y)**(a+b)
     context = { 'result' : result }
     return render(request,'calculations/result.html', context)
+
+@api_view(["POST"])
+def calculate_api(request):
+    try:
+
+        data = request.data
+        x = int(data['x'])
+        n = int(data['n'])
+        if x == 0:
+            result = "infinite"
+        else:
+            result = power(x, n)
+        return JsonResponse('result : {} '.format(result), safe=False)
+    except ValueError as e:
+        return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
