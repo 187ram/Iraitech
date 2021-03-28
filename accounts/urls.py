@@ -24,4 +24,4 @@ urlpatterns = [
     path('profile/<int:pk>/', accounts_views.ProfileDetailView.as_view(), name='profile-detail'),
     path('register', accounts_views.register, name='register'),
     path('profile', accounts_views.profile, name='profile'),
-] 
+]
